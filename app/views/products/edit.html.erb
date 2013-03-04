@@ -1,0 +1,96 @@
+
+
+<div class="contentwrapper"><!--Content wrapper-->
+  <div class="heading">
+
+    <h3>产品管理</h3>
+
+    
+
+    <ul class="breadcrumb">
+      <li>You are here:</li>
+      <li>
+        <a href="#" class="tip" title="back to dashboard">
+          <span class="icon16 icomoon-icon-screen"></span>
+        </a>
+        <span class="divider">
+          <span class="icon16 icomoon-icon-arrow-right"></span>
+        </span>
+      </li>
+      <li class="active">产品管理</li>
+    </ul>
+
+  </div><!-- End .heading-->
+
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="box">
+        <div class="title">
+          <h4>
+            <span class="icon16 brocco-icon-grid"></span>
+            <span>修改产品</span>
+          </h4>
+        </div>
+
+
+        <div class="content ">
+          <%= form_for(@product, :html=>{:class=>'form-horizontal',:multipart=>true}) do |f| %>
+            <% if @product.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+                <ul>
+                  <% @product.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="form-row row-fluid">
+              <div class="span12">
+                <div class="row-fluid">
+                  <label for="title" class="form-label span4">名称</label>
+                  <%= f.text_field :title,:class=>'span8 focused text' %>
+                </div>
+              </div>
+            </div>
+            <div class="form-row row-fluid">
+              <div class="span12">
+                <div class="row-fluid">
+                  <label for="bh" class="form-label span4">编号</label>
+                  <%= f.text_field :bh,:class=>'span8 focused text' %>
+                </div>
+              </div>
+            </div>
+            <div class="form-row row-fluid">
+              <div class="span12">
+                <div class="row-fluid">
+                  <label for="weight" class="form-label span4">重量</label>
+                  <%= f.text_field :weight,:class=>'span8 focused text' %>
+                </div>
+              </div>
+            </div>
+          <div class="form-row row-fluid">
+        <div class="span12">
+          <div class="row-fluid">
+            <label class="form-label span4">上传文件：</label>
+            <input type="file" name="product[upload_picture]" class='span4 focused text'></input>
+            <% if @product.image_url %>
+            <img src="/products/<%= @product.image_url %>" class="span4 img-polaroid " style="width:69px;height: 60px;" />
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+            <div class="form-actions">
+              <button class="btn btn-info" type="submit">保存</button>
+              <a class="btn" href="<%= products_path %>">取消</a>
+
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

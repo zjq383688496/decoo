@@ -1,0 +1,95 @@
+<div class="contentwrapper"><!--Content wrapper-->
+  <div class="heading">
+
+    <h3>产品颜色管理</h3>
+
+
+    <ul class="breadcrumb">
+      <li>You are here:</li>
+      <li>
+        <a href="#" class="tip" title="back to dashboard">
+          <span class="icon16 icomoon-icon-screen"></span>
+        </a>
+        <span class="divider">
+          <span class="icon16 icomoon-icon-arrow-right"></span>
+        </span>
+      </li>
+      <li class="active">产品颜色管理</li>
+    </ul>
+
+  </div><!-- End .heading-->
+
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="box">
+        <div class="title">
+          <h4>
+            <span class="icon16 brocco-icon-grid"></span>
+            <span>修改产品颜色</span>
+          </h4>
+        </div>
+
+
+        <div class="content ">
+          <%= form_for(@color, :html=>{:class=>'form-horizontal'}) do |f| %>
+            <% if @color.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@color.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+                <ul>
+                  <% @color.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="form-row row-fluid">
+              <div class="span12">
+                <div class="row-fluid">
+                  <label for="title" class="form-label span4">名称</label>
+                  <%= f.text_field :name,:class=>'span8 focused text' %>
+                </div>
+              </div>
+            </div>
+            <div class="form-row row-fluid">
+              <div class="span12">
+                <div class="row-fluid">
+                  <label for="bh" class="form-label span4">编号</label>
+                  <%= f.text_field :bh,:class=>'span8 focused text' %>
+                </div>
+              </div>
+            </div>
+            <div class="form-row row-fluid">
+              <div class="span12">
+                <div class="row-fluid">
+                  <label for="weight" class="form-label span4">颜色值</label>
+                  
+                  <div style="position:relative;margin-left: 0" class="span8">
+                    <input type="text" value="<%= @color.value.empty? ? '#123456':@color.value %>" name="color[value]" id="color" style="background-color: <%= @color.value %>;" class="text">
+                    <div class="picker">
+                      <div class="farbtastic">
+                        <div class="color" style="background-color: rgb(0, 127, 255);"></div>
+                        <div class="wheel"></div>
+                        <div class="overlay"></div>
+                        <div class="h-marker marker" style="left: 55px; top: 170px;"></div>
+                        <div class="sl-marker marker" style="left: 82px; top: 127px;"></div>
+                      </div>
+                    </div>
+                    </input>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+            <div class="form-actions">
+              <button class="btn btn-info" type="submit">保存</button>
+              <a class="btn" href="<%= colors_path %>">取消</a>
+
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
