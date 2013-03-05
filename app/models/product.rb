@@ -1,6 +1,8 @@
 class Product < ActiveRecord::Base
   attr_accessible :bh, :color_id, :image_url, :title, :weight,:upload_picture
 
+  
+
   @@storage_path =  "#{Rails.root}/public/products"
 
   def upload_picture=(picture_field)

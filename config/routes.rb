@@ -1,4 +1,8 @@
 Decoo::Application.routes.draw do
+  resources :in_stock_items
+
+  resources :in_stocks
+
   resources :stocks
 
   resources :colors
