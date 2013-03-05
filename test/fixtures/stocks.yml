@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  bh: MyString
+  name: MyString
+  color: MyString
+  color_id: 1
+  product_id: 1
+  quantity: 1
+
+two:
+  bh: MyString
+  name: MyString
+  color: MyString
+  color_id: 1
+  product_id: 1
+  quantity: 1
