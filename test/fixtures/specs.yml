@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  bh: MyString
+  name: MyString
+  value: MyString
+  is_color: false
+  color_id: 1
+
+two:
+  bh: MyString
+  name: MyString
+  value: MyString
+  is_color: false
+  color_id: 1

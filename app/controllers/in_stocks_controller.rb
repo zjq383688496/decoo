@@ -24,7 +24,7 @@ class InStocksController < ApplicationController
   # GET /in_stocks/new
   # GET /in_stocks/new.json
   def new
-    @in_stock = InStock.create {:user_id=1}
+    @in_stock = InStock.create { :user_id=>1 }
     @items=@in_stock.in_stock_items
 
     respond_to do |format|

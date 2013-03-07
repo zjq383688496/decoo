@@ -26,13 +26,14 @@
     </div>
   </div>
 
+
   <div class="row-fluid">
     <div class="span12">
       <div class="box">
         <div class="title">
           <h4>
             <span class="icon16 brocco-icon-grid"></span>
-            <span>产品颜色列表</span>
+            <span>明细</span>
             
 <%#*<form action="" class="box-form right">%>
 <%#*<a href="#" data-toggle="dropdown" class="btn dropdown-toggle">%>
@@ -52,7 +53,7 @@
           <div style="padding: 15px;">
             <a href="#new-modal" role="button"  class="btn btn-success " data-toggle="modal">
               <span class="icon14 iconic-icon-plus white"></span>
-              新增产品颜色
+              新增
             </a>
 
             <%#*<form class="form-inline pull-right" style="padding-left:20px;">%>
@@ -68,6 +69,9 @@
                 <th colspan="2" >颜色</th>
                 <th>编号</th>
                 <th>名称</th>
+                <th>颜色</th>
+                <th>重量</th>
+                <th>数量</th>
                 
 <%#*<th class="ch" id="masterCh"><div class="checker" id="uniform-undefined"><span><input type="checkbox" class="styled" value="all" name="checkbox" style="opacity: 0;"></span></div></th>%>
                 <th>Actions</th>
@@ -76,17 +80,18 @@
             <tbody>
 
 
-              <% @colors.each do |color| %>
+              <% @items.each do |item| %>
                 <tr>
-                  <td><%= color.id %></td>
-                  <td style="background-color: <%= color.value %>">
+                  <td><%= item.id %></td>
+                  <td><%= item.name %></td>
+                  <td style="background-color: <%= item.color.value %>">
 
                   </td>
                   <td>
-                     <%= color.value %>
+                     <%= item.weight %>
                   </td>
-                  <td><%= color.bh %></td>
-                  <td><%= color.name %></td>
+                  <td><%= item.quantity %></td>
+                  
 
 
   <%#*<td class="chChildren">%>
@@ -96,10 +101,10 @@
   <%#*</td>%>
                   <td>
                     <div class="controls center">
-                      <a class="tip" href="<%= edit_color_path(color) %>" oldtitle="Edit task" title="">
+                      <a class="tip" href="<%= edit_in_stock_item_path(item) %>" oldtitle="Edit task" title="">
                         <span class="icon12 icomoon-icon-pencil"></span>
                       </a>
-                      <%= link_to "", color, :class => "icon icomoon-icon-remove",'data-confirm' => "确定要删除吗？", :method => :delete, :title => "确定要删除吗？" %>
+                      <%= link_to "", item, :class => "icon icomoon-icon-remove",'data-confirm' => "确定要删除吗？", :method => :delete, :title => "确定要删除吗？" %>
 
                     </div>
                   </td>
@@ -110,7 +115,7 @@
           </table>
 
           <div style="padding: 10px;">
-            <%= will_paginate @colors, :inner_window => 2 %>
+            <%#= will_paginate @colors, :inner_window => 2 %>
           </div>
 
         </div>
@@ -125,16 +130,16 @@
 <div id="new-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">新增产品颜色</h3>
+    <h3 id="myModalLabel">新增</h3>
   </div>
   <div class="modal-body">
-    <%= form_for(@color, :html=>{:class=>'form-horizontal'}) do |f| %>
-      <% if @color.errors.any? %>
+    <%= form_for(@item, :html=>{:class=>'form-horizontal'}) do |f| %>
+      <% if @item.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@color.errors.count, "error") %> prohibited this product from being saved:</h2>
+          <h2><%= pluralize(@item.errors.count, "error") %> prohibited this product from being saved:</h2>
 
           <ul>
-            <% @color.errors.full_messages.each do |msg| %>
+            <% @item.errors.full_messages.each do |msg| %>
               <li><%= msg %></li>
             <% end %>
           </ul>
@@ -148,33 +153,8 @@
           </div>
         </div>
       </div>
-      <div class="form-row row-fluid">
-        <div class="span12">
-          <div class="row-fluid">
-            <label for="bh" class="form-label span4">编号</label>
-            <%= f.text_field :bh,:class=>'span8 focused text' %>
-          </div>
-        </div>
-      </div>
-      <div class="form-row row-fluid">
-        <div class="span12">
-          <div class="row-fluid">
-            <label for="weight" class="form-label span4">颜色值</label>
-            <div style="position:relative;" class="span8">
-                <input type="text" value="#123456" name="color[value]" id="color" style="background-color: rgb(18, 52, 86); color: rgb(255, 255, 255);" class="text">
-                <div class="picker">
-                  <div class="farbtastic">
-                    <div class="color" style="background-color: rgb(0, 127, 255);"></div>
-                    <div class="wheel"></div>
-                    <div class="overlay"></div>
-                    <div class="h-marker marker" style="left: 55px; top: 170px;"></div>
-                    <div class="sl-marker marker" style="left: 82px; top: 127px;"></div>
-                  </div>
-                </div>
-                </input>
-              </div>
-          </div>
-        </div>
+      
+      
       </div>
       
 

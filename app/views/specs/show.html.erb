@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Bh:</b>
+  <%= @spec.bh %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @spec.name %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @spec.value %>
+</p>
+
+<p>
+  <b>Is color:</b>
+  <%= @spec.is_color %>
+</p>
+
+<p>
+  <b>Color:</b>
+  <%= @spec.color_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_spec_path(@spec) %> |
+<%= link_to 'Back', specs_path %>
