@@ -1,9 +1,12 @@
+# encoding: utf-8
 class SpecPropertiesController < ApplicationController
+    
+
   # GET /spec_properties
   # GET /spec_properties.json
   def index
     @spec_properties = SpecProperty.all
-
+    @spec_property = SpecProperty.new
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @spec_properties }
@@ -34,6 +37,7 @@ class SpecPropertiesController < ApplicationController
 
   # GET /spec_properties/1/edit
   def edit
+    @spec_properties = SpecProperty.all
     @spec_property = SpecProperty.find(params[:id])
   end
 
@@ -44,10 +48,10 @@ class SpecPropertiesController < ApplicationController
 
     respond_to do |format|
       if @spec_property.save
-        format.html { redirect_to @spec_property, notice: 'Spec property was successfully created.' }
+        format.html { redirect_to spec_properties_url, notice: '自定义规格已创建成功.' }
         format.json { render json: @spec_property, status: :created, location: @spec_property }
       else
-        format.html { render action: "new" }
+        format.html { render action: "index" }
         format.json { render json: @spec_property.errors, status: :unprocessable_entity }
       end
     end
@@ -60,7 +64,7 @@ class SpecPropertiesController < ApplicationController
 
     respond_to do |format|
       if @spec_property.update_attributes(params[:spec_property])
-        format.html { redirect_to @spec_property, notice: 'Spec property was successfully updated.' }
+        format.html { redirect_to spec_properties_url, notice: '自定义规格已更新成功.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +80,7 @@ class SpecPropertiesController < ApplicationController
     @spec_property.destroy
 
     respond_to do |format|
-      format.html { redirect_to spec_properties_url }
+      format.html { redirect_to spec_properties_url, notice: '自定义规格已删除成功.'  }
       format.json { head :no_content }
     end
   end

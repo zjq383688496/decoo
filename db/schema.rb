@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305064740) do
+ActiveRecord::Schema.define(:version => 20130307061906) do
 
   create_table "colors", :force => true do |t|
     t.string   "name"
@@ -42,6 +42,23 @@ ActiveRecord::Schema.define(:version => 20130305064740) do
     t.string   "image_url"
     t.string   "bh"
     t.decimal  "weight"
+    t.integer  "color_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "spec_properties", :force => true do |t|
+    t.string   "name"
+    t.text     "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "specs", :force => true do |t|
+    t.string   "bh"
+    t.string   "name"
+    t.string   "value"
+    t.boolean  "is_color"
     t.integer  "color_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
