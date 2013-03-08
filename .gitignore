@@ -14,3 +14,4 @@
 /log/*.log
 /tmp
 gemfile.lock
+/public/products

@@ -1,30 +1,61 @@
+
 <p id="notice"><%= notice %></p>
+<div class="row-fluid">
+  <div class="span6">
+    <img src="/products/<%= @product.image_url %>" class="img-polaroid" style="width:auto;height: 60px;"/>
+  </div>
+  <div class="span6">
+    <p>
+      <b>名称:</b>
+      <%= @product.title %>
+    </p>
+    <p>
+      <b>编号:</b>
+      <%= @product.bh %>
+    </p>
+    <p>
+      <b>重量:</b>
+      <%= @product.weight %>
+    </p>
+    <p>
+      <b>备注:</b>
+      <%= @product.memo %>
+    </p>
+  </div>
+</div>
+<div>
+  <p>规格</p>
+  <table id="checkAll" class="responsive table table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>        
+        <th>编号</th>
+        <th>名称</th>
+        <th colspan="2" >颜色</th>
+        <th>规格</th>
+      </tr>
+    </thead>
+    <tbody>
 
-<p>
-  <b>Title:</b>
-  <%= @product.title %>
-</p>
 
-<p>
-  <b>Image url:</b>
-  <%= @product.image_url %>
-</p>
+      <% @product.specs.each do |spec| %>
+        <tr>
+          <td><%= spec.id %></td>
+          <td><%= spec.bh %></td>
+          <td><%= spec.name %></td>
+          <td style="background-color: <%= spec.color.value %>">
+          </td>
+          <td>
+            <%= spec.color.value %>
+          </td>
+          <td>
+            <%= spec.material %>
+          </td>
 
-<p>
-  <b>Bh:</b>
-  <%= @product.bh %>
-</p>
-
-<p>
-  <b>Weight:</b>
-  <%= @product.weight %>
-</p>
-
-<p>
-  <b>Color:</b>
-  <%= @product.color_id %>
-</p>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>

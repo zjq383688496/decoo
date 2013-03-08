@@ -67,9 +67,10 @@
               <tr>
                 <th>#</th>
                 <th>图片</th>
-                <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" >编号</th>
+                <th >编号</th>
                 <th>名称</th>
                 <th>重量</th>
+                <th>规格数</th>
 <%#*<th class="ch" id="masterCh"><div class="checker" id="uniform-undefined"><span><input type="checkbox" class="styled" value="all" name="checkbox" style="opacity: 0;"></span></div></th>%>
                 <th>Actions</th>
               </tr>
@@ -89,7 +90,9 @@
                   <td><%= product.title %></td>
 
                   <td><%= product.weight %></td>
-
+                  <td>
+                    <%= product.specs.size %>
+                  </td>
   <%#*<td class="chChildren">%>
   <%#*<div class="checker" id="uniform-undefined">%>
   <%#*<span><input type="checkbox" class="styled" value="" name="checkbox" style="opacity: 0;"></span>%>
@@ -97,9 +100,8 @@
   <%#*</td>%>
                   <td>
                     <div class="controls center">
-                      <a class="tip" href="<%= edit_product_path(product) %>" oldtitle="Edit task" title="">
-                        <span class="icon12 icomoon-icon-pencil"></span>
-                      </a>
+                      <a data-toggle="modal" href="#detail_modal" data-target="#detail_modal" data-remote="<%= product_url(product) %>">详细</a>
+                      <%= link_to "",edit_product_path(product),:class=>"icon12 icomoon-icon-pencil" %>
                       <%= link_to "", product, :class => "icon icomoon-icon-remove",'data-confirm' => "确定要删除吗？", :method => :delete, :title => "确定要删除吗？" %>
 
                     </div>
@@ -180,5 +182,21 @@
 
     </div>
   <% end %>
+</div>
+
+<div id="detail_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">零件详细信息</h3>
+  </div>
+  <div class="modal-body">
+
+  </div>
+
+  <div class="modal-footer">
+      
+      <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+
+    </div>
 </div>
 

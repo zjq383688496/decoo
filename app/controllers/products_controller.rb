@@ -20,9 +20,9 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
-
+    
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :layout=>false } # show.html.erb
       format.json { render json: @product }
     end
   end

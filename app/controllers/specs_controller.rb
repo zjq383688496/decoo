@@ -40,11 +40,12 @@ class SpecsController < ApplicationController
   # POST /specs
   # POST /specs.json
   def create
-    @spec = Spec.new(params[:spec])
-
+    #@spec = Spec.new(params[:spec])
+    @product=Product.find(params[:product_id])
+    @spec=@product.specs.build(params[:spec])
     respond_to do |format|
       if @spec.save
-        format.html { redirect_to @spec, notice: 'Spec was successfully created.' }
+        format.html { redirect_to edit_product_url(@product), notice: 'Spec was successfully created.' }
         format.json { render json: @spec, status: :created, location: @spec }
       else
         format.html { render action: "new" }
