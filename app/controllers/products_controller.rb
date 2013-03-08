@@ -41,6 +41,8 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @specs=@product.specs
+    @spec=Spec.new(:product_id=>@product.id)
   end
 
   # POST /products

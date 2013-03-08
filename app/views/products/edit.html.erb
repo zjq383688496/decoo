@@ -46,6 +46,8 @@
                 </ul>
               </div>
             <% end %>
+          <div class="row-fluid"">
+              <div class="span4">
             <div class="form-row row-fluid">
               <div class="span12">
                 <div class="row-fluid">
@@ -70,6 +72,20 @@
                 </div>
               </div>
             </div>
+
+            </div>
+
+               <div class="span8">
+
+                 <div class="form-row row-fluid">
+              <div class="span12">
+                <div class="row-fluid">
+                  <label for="weight" class="form-label span4">备注</label>
+                  <%= f.text_area :memo,:class=>'span8 uniform',:rows=>3 %>
+                </div>
+              </div>
+            </div>
+
           <div class="form-row row-fluid">
         <div class="span12">
           <div class="row-fluid">
@@ -81,6 +97,8 @@
           </div>
         </div>
       </div>
+                 </div>
+        </div>
 
             <div class="form-actions">
               <button class="btn btn-info" type="submit">保存</button>
@@ -90,7 +108,138 @@
           <% end %>
         </div>
       </div>
+
+      <div class="box">
+        <div class="title">
+          <h4>
+            <span class="icon16 brocco-icon-grid"></span>
+            <span>产品规格</span>
+          </h4>
+        </div>
+        <div class="content noPad">
+          <div style="padding: 15px;">
+            <a href="#new-modal" role="button"  class="btn btn-success " data-toggle="modal">
+              <span class="icon14 iconic-icon-plus white"></span>
+              新增产品规格
+            </a>
+
+          </div>
+          <table id="DataTables_Table_0" class="responsive table table-bordered ">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>编号</th>
+                
+                <th>颜色</th>
+                <th>材料</th>
+<%#*<th class="ch" id="masterCh"><div class="checker" id="uniform-undefined"><span><input type="checkbox" class="styled" value="all" name="checkbox" style="opacity: 0;"></span></div></th>%>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+
+
+              <% @specs.each do |spec| %>
+                <tr>
+                  <td><%= spec.id %></td>
+                  
+                  <td><%= spec.bh %></td>
+                  <td><%= spec.color_id %></td>
+
+                  <td><%= spec.material %></td>
+
+                  <td>
+                    <div class="controls center">
+                      <a class="tip" href="<%#= edit_product_path(product) %>" oldtitle="Edit task" title="">
+                        <span class="icon12 icomoon-icon-pencil"></span>
+                      </a>
+                      <%= link_to "", spec, :class => "icon icomoon-icon-remove",'data-confirm' => "确定要删除吗？", :method => :delete, :title => "确定要删除吗？" %>
+
+                    </div>
+                  </td>
+
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <div style="padding: 10px;">
+            <%#= will_paginate @products, :inner_window => 2 %>
+          </div>
+        </div>
+        
+      </div><!-- End .box -->
+
     </div>
   </div>
+</div>
+
+<div id="new-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">新增产品规格</h3>
+  </div>
+  <div class="modal-body">
+    <%= form_for(@spec, :product_id=>@product,:html=>{:class=>'form-horizontal'}) do |f| %>
+      <% if @spec.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@spec.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+          <ul>
+            <% @spec.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="form-row row-fluid">
+        <div class="span12">
+          <div class="row-fluid">
+            <label for="title" class="form-label span4">名称</label>
+            <%= f.text_field :name,:class=>'span8 focused text' %>
+          </div>
+        </div>
+      </div>
+      <div class="form-row row-fluid">
+        <div class="span12">
+          <div class="row-fluid">
+            <label for="bh" class="form-label span4">编号</label>
+            <%= f.text_field :bh,:class=>'span8 focused text' %>
+          </div>
+        </div>
+      </div>
+      <div class="form-row row-fluid">
+        <div class="span12">
+          <div class="row-fluid">
+            <label for="weight" class="form-label span4">颜色</label>
+            <%= f.text_field :color_id,:class=>'span8 focused text' %>
+          </div>
+        </div>
+      </div>
+    <div class="form-row row-fluid">
+        <div class="span12">
+          <div class="row-fluid">
+            <label class="form-label span4" for="checkboxes">材料</label>
+            <div class="span8 controls">
+              <select name="select" class="nostyle" multiple="multiple">
+                <option>Who
+                </option><option selected="selected">What
+                </option><option>When
+                </option><option>Where
+                </option><option>How
+                </option></select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-info" type="submit">保存</button>
+      <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+
+    </div>
+  <% end %>
 </div>
 

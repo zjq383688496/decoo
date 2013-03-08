@@ -6,7 +6,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :bh
       t.decimal :weight
       t.integer :color_id
-
+      t.text    :memo
       t.timestamps
     end
   end

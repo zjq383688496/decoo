@@ -1,3 +1,5 @@
 class Spec < ActiveRecord::Base
-  attr_accessible :bh, :color_id, :is_color, :name, :value
+  attr_accessible :bh, :color_id, :product_id, :material,:name
+
+  belongs_to :product
 end

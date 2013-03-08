@@ -4,10 +4,9 @@ class CreateSpecs < ActiveRecord::Migration
       t.integer :product_id
       t.string :bh
       t.string :name
-      t.string :value
-      t.boolean :is_color
       t.integer :color_id
-
+      t.string :material
+      t.integer :quantity
       t.timestamps
     end
   end

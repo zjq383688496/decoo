@@ -11,7 +11,9 @@ Decoo::Application.routes.draw do
 
   resources :colors
 
-  resources :products
+  resources :products do
+    resources :specs
+  end
 
   get "main/index"
 
