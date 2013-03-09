@@ -221,13 +221,9 @@
           <div class="row-fluid">
             <label class="form-label span4" for="checkboxes">材料</label>
             <div class="span8 controls">
-              <select name="spec[material]" class="nostyle" multiple="multiple">
-                <option>Who
-                </option><option selected="selected">What
-                </option><option>When
-                </option><option>Where
-                </option><option>How
-                </option></select>
+              <select name="spec[material][]" class="nostyle" multiple="multiple">
+                <%= options_for_select @materails %>
+              </select>
             </div>
           </div>
         </div>

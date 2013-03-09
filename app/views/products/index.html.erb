@@ -4,7 +4,7 @@
 
     <h3>产品管理</h3>
 
-    
+
 
     <ul class="breadcrumb">
       <li>You are here:</li>
@@ -34,7 +34,7 @@
           <h4>
             <span class="icon16 brocco-icon-grid"></span>
             <span>产品列表</span>            
-            
+
 <%#*<form action="" class="box-form right">%>
 <%#*<a href="#" data-toggle="dropdown" class="btn dropdown-toggle">%>
 <%#*<span class="icon16 iconic-icon-cog"></span>%>
@@ -83,7 +83,7 @@
                   <td><%= product.id %></td>
                   <td>
                     <a title="<%= product.title %>" rel="prettyPhoto" href="/products/<%= product.image_url %>">
-                    <img src="/products/<%= product.image_url %>" class="img-polaroid" style="width:auto;height: 60px;"/>
+                      <img src="/products/<%= product.image_url %>" class="img-polaroid" style="width:auto;height: 60px;"/>
                     </a>
                   </td>
                   <td><%= product.bh %></td>
@@ -194,9 +194,13 @@
   </div>
 
   <div class="modal-footer">
-      
-      <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
 
-    </div>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+
+  </div>
 </div>
-
+<script type="text/javascript">
+       $('body').on('hidden', '.modal', function () {
+$(this).removeData('modal');
+});
+    </script>

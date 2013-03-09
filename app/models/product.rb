@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :bh, :color_id, :image_url, :title, :weight,:upload_picture
+  attr_accessible :bh, :color_id, :image_url, :title, :weight,:upload_picture,:memo
 
   has_many :specs
 

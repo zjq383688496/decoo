@@ -43,6 +43,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @specs=@product.specs
     @spec=Spec.new(:product_id=>@product.id)
+    @materails=SpecProperty.find_by_key('materail').value.split(/[\,，]/)
   end
 
   # POST /products

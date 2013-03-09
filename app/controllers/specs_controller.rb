@@ -42,6 +42,7 @@ class SpecsController < ApplicationController
   def create
     #@spec = Spec.new(params[:spec])
     @product=Product.find(params[:product_id])
+    params[:spec][:material]=params[:spec][:material].join(",")
     @spec=@product.specs.build(params[:spec])
     respond_to do |format|
       if @spec.save

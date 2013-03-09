@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20130307061906) do
 
   create_table "spec_properties", :force => true do |t|
     t.string   "name"
+    t.string   "key"
     t.text     "value"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
