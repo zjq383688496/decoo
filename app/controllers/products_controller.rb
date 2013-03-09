@@ -42,8 +42,8 @@ class ProductsController < ApplicationController
   def edit
     @product = Product.find(params[:id])
     @specs=@product.specs
-    @spec=Spec.new(:product_id=>@product.id)
-    @materails=SpecProperty.find_by_key('materail').value.split(/[\,，]/)
+    @spec=Spec.new(:product_id=>@product.id,:bh=>"#{@product.bh}-")
+    @materials=SpecProperty.material
   end
 
   # POST /products

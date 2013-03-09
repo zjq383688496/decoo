@@ -100,8 +100,8 @@
   <%#*</td>%>
                   <td>
                     <div class="controls center">
-                      <a data-toggle="modal" href="#detail_modal" data-target="#detail_modal" data-remote="<%= product_url(product) %>">详细</a>
-                      <%= link_to "",edit_product_path(product),:class=>"icon12 icomoon-icon-pencil" %>
+                      <a data-toggle="modal" href="#detail_modal" data-target="#detail_modal" data-remote="<%= product_url(product) %>" class="icon brocco-icon-eye" title="查看产品详细信息"></a>
+                      <%= link_to "",edit_product_path(product),:class=>"icon12 icomoon-icon-pencil",:title=>"编辑产品和规格" %>
                       <%= link_to "", product, :class => "icon icomoon-icon-remove",'data-confirm' => "确定要删除吗？", :method => :delete, :title => "确定要删除吗？" %>
 
                     </div>
@@ -200,7 +200,7 @@
   </div>
 </div>
 <script type="text/javascript">
-       $('body').on('hidden', '.modal', function () {
-$(this).removeData('modal');
-});
-    </script>
+  $('body').on('hidden', '.modal', function () {
+    $(this).removeData('modal');
+  });
+</script>

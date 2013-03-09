@@ -1,3 +1,4 @@
+# encoding: utf-8
 class SpecsController < ApplicationController
   # GET /specs
   # GET /specs.json
@@ -40,9 +41,12 @@ class SpecsController < ApplicationController
   # POST /specs
   # POST /specs.json
   def create
-    #@spec = Spec.new(params[:spec])
     @product=Product.find(params[:product_id])
-    params[:spec][:material]=params[:spec][:material].join(",")
+    if Color.find_by_bh(params[:spec][:color_bh]).nil?
+      redirect_to edit_product_url(@product), notice: "规格创建失败！颜色编号#{params[:spec][:color_bh]}不存在." and return
+    end
+    
+    params[:spec][:material]=params[:spec][:material].join(",") if params[:spec][:material]
     @spec=@product.specs.build(params[:spec])
     respond_to do |format|
       if @spec.save
