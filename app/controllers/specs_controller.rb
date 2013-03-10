@@ -46,7 +46,8 @@ class SpecsController < ApplicationController
   def create
     @product=Product.find(params[:product_id])
     if Color.find_by_bh(params[:spec][:color_bh]).nil?
-      redirect_to edit_product_url(@product), notice: "规格创建失败！颜色编号#{params[:spec][:color_bh]}不存在." and return
+      flash[:error]="规格创建失败！颜色编号#{params[:spec][:color_bh]}不存在."
+      redirect_to edit_product_url(@product) and return
     end
     
     params[:spec][:material]=params[:spec][:material].join(",") if params[:spec][:material]
