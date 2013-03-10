@@ -13,5 +13,9 @@ class Spec < ActiveRecord::Base
     
     errors.add(:color_bh,"颜色编号#{color_bh_field}不存在")
   end
+
+  def color_bh
+    Color.find(self.color_id).bh
+  end
   
 end

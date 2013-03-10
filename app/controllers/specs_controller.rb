@@ -36,6 +36,9 @@ class SpecsController < ApplicationController
   # GET /specs/1/edit
   def edit
     @spec = Spec.find(params[:id])
+    @materials=SpecProperty.material
+    @product=Product.find(params[:product_id])
+    render :layout=>false
   end
 
   # POST /specs
@@ -50,7 +53,7 @@ class SpecsController < ApplicationController
     @spec=@product.specs.build(params[:spec])
     respond_to do |format|
       if @spec.save
-        format.html { redirect_to edit_product_url(@product), notice: 'Spec was successfully created.' }
+        format.html { redirect_to edit_product_url(@product), notice: '新规格已成功创建.' }
         format.json { render json: @spec, status: :created, location: @spec }
       else
         format.html { render action: "new" }
@@ -79,10 +82,11 @@ class SpecsController < ApplicationController
   # DELETE /specs/1.json
   def destroy
     @spec = Spec.find(params[:id])
+    
+    @product=@spec.product
     @spec.destroy
-
     respond_to do |format|
-      format.html { redirect_to specs_url }
+      format.html { redirect_to edit_product_url(@product), notice: '规格已成功删除.' }
       format.json { head :no_content }
     end
   end

@@ -1,6 +1,57 @@
-<h1>Editing spec</h1>
+<%= form_for(@spec, :url=>product_spec_path(@product,@spec),:method=>:put,:html=>{:class=>'form-horizontal'}) do |f| %>
+  <% if @spec.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@spec.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-<%= render 'form' %>
+      <ul>
+        <% @spec.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-row row-fluid">
+    <div class="span12">
+      <div class="row-fluid">
+        <label for="title" class="form-label span4">名称</label>
+        <%= f.text_field :name,:class=>'span8 focused text' %>
+      </div>
+    </div>
+  </div>
+  <div class="form-row row-fluid">
+    <div class="span12">
+      <div class="row-fluid">
+        <label for="bh" class="form-label span4">货号</label>
+        <%= f.text_field :bh,:class=>'span8 focused text',:readonly=>"readonly" %>
+      </div>
+    </div>
+  </div>
+  <div class="form-row row-fluid">
+    <div class="span12">
+      <div class="row-fluid">
+        <label for="weight" class="form-label span4">颜色编号</label>
+        <input id="spec_color_bh" name="spec[color_bh]" class="span8 focused text" value="<%= @spec.color_bh %>"></input>
+  
+      </div>
+    </div>
+  </div>
+  <div class="form-row row-fluid">
+    <div class="span12">
+      <div class="row-fluid">
+        <label class="form-label span4" for="checkboxes">材料</label>
+        <div class="span8 controls">
+          <select name="spec[material][]" class="nostyle" multiple="multiple">
+            <%= options_for_select @materials,@spec.material.split(/[\,，]/) %>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<%= link_to 'Show', @spec %> |
-<%= link_to 'Back', specs_path %>
+
+  <div class="form-actions">
+    <button class="btn btn-info" type="submit">保存</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+
+  </div>
+<% end %>
