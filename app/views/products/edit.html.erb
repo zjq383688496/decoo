@@ -133,8 +133,8 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>编号</th>
-                
+                <th>货号</th>
+                <th>名称</th>
                 <th colspan="2">颜色编号</th>
                 <th>材料</th>
 <%#*<th class="ch" id="masterCh"><div class="checker" id="uniform-undefined"><span><input type="checkbox" class="styled" value="all" name="checkbox" style="opacity: 0;"></span></div></th>%>
@@ -147,7 +147,7 @@
               <% @specs.each do |spec| %>
                 <tr>
                   <td><%= spec.id %></td>
-                  
+                  <td><%= spec.name %></td>
                   <td><%= spec.bh %></td>
                   <td style="background-color: <%= spec.color.value %>"></td>
                   <td><%= spec.color.name %></td>

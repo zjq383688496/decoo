@@ -66,11 +66,18 @@ class SpecsController < ApplicationController
   # PUT /specs/1
   # PUT /specs/1.json
   def update
+    @product=Product.find(params[:product_id])
+    if Color.find_by_bh(params[:spec][:color_bh]).nil?
+      flash[:error]="规格创建失败！颜色编号#{params[:spec][:color_bh]}不存在."
+      redirect_to edit_product_url(@product) and return
+    end
+
+    params[:spec][:material]=params[:spec][:material].join(",") if params[:spec][:material]
     @spec = Spec.find(params[:id])
 
     respond_to do |format|
       if @spec.update_attributes(params[:spec])
-        format.html { redirect_to @spec, notice: 'Spec was successfully updated.' }
+        format.html { redirect_to edit_product_url(@product), notice: '新规格已成功修改.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
