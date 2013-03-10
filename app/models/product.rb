@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
   attr_accessible :bh, :color_id, :image_url, :title, :weight,:upload_picture,:memo
 
-  has_many :specs
+  has_many :specs ,:dependent=>:destroy
 
   @@storage_path =  "#{Rails.root}/public/products"
 
