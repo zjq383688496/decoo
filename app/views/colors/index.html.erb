@@ -32,7 +32,7 @@
         <div class="title">
           <h4>
             <span class="icon16 brocco-icon-grid"></span>
-            <span>产品颜色列表</span>
+            <span>颜色列表</span>
             
 <%#*<form action="" class="box-form right">%>
 <%#*<a href="#" data-toggle="dropdown" class="btn dropdown-toggle">%>
@@ -52,13 +52,13 @@
           <div style="padding: 15px;">
             <a href="#new-modal" role="button"  class="btn btn-success " data-toggle="modal">
               <span class="icon14 iconic-icon-plus white"></span>
-              新增产品颜色
+              新增颜色
             </a>
 
-            <%#*<form class="form-inline pull-right" style="padding-left:20px;">%>
-              <%#*<input type="text" class="input-medium search-query">%>
-              <%#*<button type="submit" class="btn">搜索</button>%>
-            <%#*</form>%>
+            <form class="form-inline pull-right" style="padding-left:20px;" action="<%= colors_path %>">
+              <input type="text" class="input-medium search-query" name="search"/>
+              <button type="submit" class="btn">搜索</button>
+            </form>
 
           </div>
           <table id="checkAll" class="responsive table table-bordered">
