@@ -5,11 +5,16 @@ class ProductsController < ApplicationController
   def index
     
     @product = Product.new
+    w="1=1"
+    o="id"
+    @search=params[:search]
     if params[:search] and !params[:search].empty?
-      @products=Product.where("title like ? or bh like ? ","%#{params[:search]}%","%#{params[:search]}%").paginate(:page => params[:page], :per_page => 10)
-    else
-      @products = Product.paginate(:page => params[:page], :per_page => 10)
+      w="title like ? or bh like ? ","%#{params[:search]}%","%#{params[:search]}%"
     end
+    if params[:order] and !params[:order].empty?
+      o="#{params[:order]}"
+    end
+    @products = Product.paginate(:page => params[:page], :per_page => 10).where(w).order(o)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }

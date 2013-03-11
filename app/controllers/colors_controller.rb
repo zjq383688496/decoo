@@ -3,12 +3,17 @@ class ColorsController < ApplicationController
   # GET /colors
   # GET /colors.json
   def index
+    w="1=1"
+    o="id"
+    @search=params[:search]
     if params[:search] and !params[:search].empty?
-      @colors=Color.where("name like ? or bh like ? ","%#{params[:search]}%","%#{params[:search]}%").paginate(:page => params[:page], :per_page => 20)
-    else
-      @colors = Color.paginate(:page => params[:page], :per_page => 20)
+      w="name like ? or bh like ? ","%#{params[:search]}%","%#{params[:search]}%"    
     end
-    
+    @order=params[:order]
+    if params[:order] and !params[:order].empty?
+      o="#{params[:order]}"
+    end
+    @colors = Color.paginate(:page => params[:page], :per_page => 20).where(w).order(o)
     @color = Color.new
     respond_to do |format|
       format.html # index.html.erb

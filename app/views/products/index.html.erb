@@ -67,10 +67,21 @@
               <tr>
                 <th>#</th>
                 <th>图片</th>
-                <th >编号</th>
+                <th >编号
+                <a href="<%= products_path %>/?order=bh&search=<%= @search %>" class="entypo-icon-arrow-20">
+                  </a>
+                  <a href='<%= "#{products_path}/?order=bh desc&search=#{@search}" %>' class="entypo-icon-arrow-19">
+                  </a>
+                </th>
                 <th>名称</th>
                 <th>重量</th>
                 <th>规格数</th>
+                <th>时间
+                <a href="<%= products_path %>/?order=created_at&search=<%= @search %>" class="entypo-icon-arrow-20">
+                  </a>
+                  <a href='<%= "#{products_path}/?order=created_at desc&search=#{@search}" %>' class="entypo-icon-arrow-19">
+                  </a>
+                </th>
 <%#*<th class="ch" id="masterCh"><div class="checker" id="uniform-undefined"><span><input type="checkbox" class="styled" value="all" name="checkbox" style="opacity: 0;"></span></div></th>%>
                 <th>Actions</th>
               </tr>
@@ -92,6 +103,9 @@
                   <td><%= product.weight %></td>
                   <td>
                     <%= product.specs.size %>
+                  </td>
+                  <td>
+                    <%= product.created_at.to_s(:db) %>
                   </td>
   <%#*<td class="chChildren">%>
   <%#*<div class="checker" id="uniform-undefined">%>
