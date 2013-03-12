@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Spec < ActiveRecord::Base
-  attr_accessible :bh, :color_id, :product_id, :material,:name,:color_bh
+  attr_accessible :bh, :color_id, :product_id, :material,:name,:color_bh,:memo
 
   validates :bh,:color_id,:product_id,:presence=>true
 

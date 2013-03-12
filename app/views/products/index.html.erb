@@ -68,7 +68,7 @@
                 <th>#</th>
                 <th>图片</th>
                 <th >编号
-                <a href="<%= products_path %>/?order=bh&search=<%= @search %>" class="entypo-icon-arrow-20">
+                  <a href="<%= products_path %>/?order=bh&search=<%= @search %>" class="entypo-icon-arrow-20">
                   </a>
                   <a href='<%= "#{products_path}/?order=bh desc&search=#{@search}" %>' class="entypo-icon-arrow-19">
                   </a>
@@ -77,7 +77,7 @@
                 <th>重量</th>
                 <th>规格数</th>
                 <th>时间
-                <a href="<%= products_path %>/?order=created_at&search=<%= @search %>" class="entypo-icon-arrow-20">
+                  <a href="<%= products_path %>/?order=created_at&search=<%= @search %>" class="entypo-icon-arrow-20">
                   </a>
                   <a href='<%= "#{products_path}/?order=created_at desc&search=#{@search}" %>' class="entypo-icon-arrow-19">
                   </a>
@@ -176,6 +176,14 @@
           <div class="row-fluid">
             <label for="weight" class="form-label span4">重量</label>
             <%= f.text_field :weight,:class=>'span8 focused text' %>
+          </div>
+        </div>
+      </div>
+      <div class="form-row row-fluid">
+        <div class="span12">
+          <div class="row-fluid">
+            <label for="weight" class="form-label span4">备注</label>
+            <%= f.text_area :memo,:class=>'span8 uniform',:rows=>3 %>
           </div>
         </div>
       </div>
