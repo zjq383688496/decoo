@@ -45,3 +45,5 @@ gem 'bootstrap_helper', "1.4.1"
 
 gem 'thin'
 
+# 用户系统
+gem 'devise', '2.1.0'
