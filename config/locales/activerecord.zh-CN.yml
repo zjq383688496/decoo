@@ -1,0 +1,10 @@
+## YAML Template.
+---
+zh-CN:
+  activerecord:
+    attributes:
+      product:
+        bh: "编号"
+        title: "名称"
+        memo: "备注"
+        weight: "重量"

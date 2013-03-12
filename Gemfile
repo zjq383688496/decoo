@@ -45,3 +45,5 @@ gem 'bootstrap_helper', "1.4.1"
 
 gem 'thin'
 
+# ±íµ¥
+gem 'simple_form', "2.0.2"

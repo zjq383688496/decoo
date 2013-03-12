@@ -71,7 +71,9 @@ class ProductsController < ApplicationController
   # PUT /products/1.json
   def update
     @product = Product.find(params[:id])
-
+    @specs=@product.specs
+    @spec=Spec.new(:product_id=>@product.id,:bh=>"#{@product.bh}-")
+    @materials=SpecProperty.material
     respond_to do |format|
       if @product.update_attributes(params[:product])
         format.html { redirect_to products_url, notice: 'Product was successfully updated.' }
