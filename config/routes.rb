@@ -1,4 +1,12 @@
 Decoo::Application.routes.draw do
+#  devise_for :users
+
+  devise_for :users, :path => "account", :controllers => {
+#      :registrations => :account,
+      :sessions => :sessions,
+#      :omniauth_callbacks => "users/omniauth_callbacks"
+    }
+
   resources :spec_properties
 
   resources :specs
