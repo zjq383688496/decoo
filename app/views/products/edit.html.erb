@@ -248,7 +248,7 @@
   $('body').on('hidden', '.modal', function () {
     $(this).removeData('modal');
   });
-  $('#spec_color_bh').keyup(function(){
+  $('#spec_color_bh').change(function(){
     $('#spec_bh').attr("value","<%= @spec.bh %>"+$(this).attr("value"));
     
   });
