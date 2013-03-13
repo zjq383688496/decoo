@@ -41,7 +41,7 @@
         <label class="form-label span4" for="checkboxes">材料</label>
         <div class="span8 controls">
           <select name="spec[material][]" class="nostyle" multiple="multiple">
-            <%= options_for_select @materials,@spec.material.split(/[\,，]/) %>
+            <%= options_for_select @materials,@spec.material_to_array %>
           </select>
         </div>
       </div>

@@ -3,7 +3,7 @@
 <div class="contentwrapper"><!--Content wrapper-->
   <div class="heading">
 
-    <h3>产品管理</h3>
+    <h3>零件管理</h3>
 
     <ul class="breadcrumb">
       <li>You are here:</li>
@@ -15,7 +15,7 @@
           <span class="icon16 icomoon-icon-arrow-right"></span>
         </span>
       </li>
-      <li class="active">产品管理</li>
+      <li class="active">零件管理</li>
     </ul>
 
   </div><!-- End .heading-->
@@ -31,7 +31,7 @@
         <div class="title">
           <h4>
             <span class="icon16 brocco-icon-grid"></span>
-            <span>修改产品</span>
+            <span>修改零件</span>
           </h4>
         </div>
 
@@ -97,14 +97,14 @@
         <div class="title">
           <h4>
             <span class="icon16 brocco-icon-grid"></span>
-            <span>产品规格</span>
+            <span>规格</span>
           </h4>
         </div>
         <div class="content noPad">
           <div style="padding: 15px;">
             <a href="#new-modal" role="button"  class="btn btn-success " data-toggle="modal">
               <span class="icon14 iconic-icon-plus white"></span>
-              新增产品规格
+              新增规格
             </a>
 
           </div>
@@ -112,9 +112,8 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>货号</th>
-                <th>名称</th>
-                <th colspan="2">颜色编号</th>
+                <th>货号</th>                
+                <th colspan="2">颜色</th>
                 <th>材料</th>
 <%#*<th class="ch" id="masterCh"><div class="checker" id="uniform-undefined"><span><input type="checkbox" class="styled" value="all" name="checkbox" style="opacity: 0;"></span></div></th>%>
                 <th>Actions</th>
@@ -125,8 +124,7 @@
 
               <% @specs.each do |spec| %>
                 <tr>
-                  <td><%= spec.id %></td>
-                  <td><%= spec.name %></td>
+                  <td><%= spec.id %></td>                  
                   <td><%= spec.bh %></td>
                   <td style="background-color: <%= spec.color.value %>"></td>
                   <td><%= spec.color.name %></td>
