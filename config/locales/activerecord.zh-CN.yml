@@ -8,3 +8,8 @@ zh-CN:
         title: "名称"
         memo: "备注"
         weight: "重量"
+      color:
+        bh: "编号"
+        name: "名称"
+        memo: "备注"
+        value: "颜色值"
