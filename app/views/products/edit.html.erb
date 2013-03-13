@@ -115,6 +115,7 @@
                 <th>货号</th>                
                 <th colspan="2">颜色</th>
                 <th>材料</th>
+                <th>备注</th>
 <%#*<th class="ch" id="masterCh"><div class="checker" id="uniform-undefined"><span><input type="checkbox" class="styled" value="all" name="checkbox" style="opacity: 0;"></span></div></th>%>
                 <th>Actions</th>
               </tr>
@@ -130,7 +131,9 @@
                   <td><%= spec.color.name %></td>
 
                   <td><%= spec.material %></td>
-
+                  <td>
+                    <%= spec.memo %>
+                  </td>
                   <td>
                     <div class="controls center">
 
