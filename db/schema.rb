@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20130313154201) do
   end
 
   create_table "users", :force => true do |t|
+    t.string   "username",               :default => ""
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
