@@ -54,8 +54,10 @@ class SpecsController < ApplicationController
     @spec=@product.specs.build(params[:spec])
     respond_to do |format|
       if @spec.save
+        @specs=@spec.product.specs
         format.html { redirect_to edit_product_url(@product), notice: '新规格已成功创建.' }
         format.json { render json: @spec, status: :created, location: @spec }
+        format.js   
       else
         format.html { render action: "new" }
         format.json { render json: @spec.errors, status: :unprocessable_entity }
