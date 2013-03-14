@@ -1,1 +1,6 @@
-$('#specs').html("<%= escape_javascript(render(@specs)) %>")
+
+<%  if !@suc %>
+alert('颜色编号不存在');
+<% else %>
+$('#specs').html("<%= escape_javascript(render(@specs)) %>");
+<% end %>

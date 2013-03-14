@@ -46,7 +46,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
-    @specs=@product.specs
+    @specs=@product.specs.order('id desc')
     @spec=Spec.new(:product_id=>@product.id,:bh=>"#{@product.bh}-")
     @materials=SpecProperty.material
   end

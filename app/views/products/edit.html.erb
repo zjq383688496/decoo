@@ -105,15 +105,19 @@
         </div>
       </div>
 
+      
+
       <div class="box">
         <div class="title">
           <h4>
             <span class="icon16 brocco-icon-grid"></span>
-            <span>增加规格</span>
+            <span>规格</span>
           </h4>
         </div>
-        <div class="content">
-          <%= form_for(@spec, :url=>product_specs_path(@product),:remote=>true,:html=>{:class=>'form-horizontal'}) do |f| %>
+        <div class="content noPad">
+          <div style="padding: 15px;">
+            
+            <%= form_for(@spec, :url=>product_specs_path(@product),:remote=>true,:html=>{:class=>'form-horizontal'}) do |f| %>
             <% if @spec.errors.any? %>
               <div id="error_explanation">
                 <h2><%= pluralize(@spec.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -171,26 +175,12 @@
             </div>
 
             <div class="form-actions">
-              <button class="btn btn-info" type="submit">保存</button>              
+              <button class="btn btn-info" type="submit">
+                <span class="icon14 iconic-icon-plus white"></span>
+              新增规格
+                </button>
             </div>
           <% end %>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="title">
-          <h4>
-            <span class="icon16 brocco-icon-grid"></span>
-            <span>规格</span>
-          </h4>
-        </div>
-        <div class="content noPad">
-          <div style="padding: 15px;">
-            <a href="#new-modal" role="button"  class="btn btn-success " data-toggle="modal">
-              <span class="icon14 iconic-icon-plus white"></span>
-              新增规格
-            </a>
-
           </div>
           <table id="DataTables_Table_0" class="responsive table table-bordered ">
             <thead>
