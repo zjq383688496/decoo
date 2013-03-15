@@ -20,13 +20,12 @@ class Spec < ActiveRecord::Base
     Color.find(self.color_id).bh
   end
 
-  def before_save
+  before_save :set_bh
+  def set_bh
     self.bh="#{self.product.bh}-#{self.color.bh}"
   end
 
-  def before_update
-    self.bh="#{self.product.bh}-#{self.color_bh}"
-  end
+  
 
   def material_to_array
     self.material.split(/[\,]/) if self.material
