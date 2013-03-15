@@ -57,12 +57,12 @@ class SpecsController < ApplicationController
     respond_to do |format|
       if !suc
         format.html {redirect_to edit_product_url(@product)}
-        format.js   { @suc=suc}
+        format.js   { @suc=false}
       elsif @spec.save
         @specs=@spec.product.specs.order('id desc')
         format.html { redirect_to edit_product_url(@product), notice: '新规格已成功创建.' }
         format.json { render json: @spec, status: :created, location: @spec }
-        format.js   { @current_spec=@spec }
+        format.js   { @suc=true,@current_spec=@spec }
       else
         format.html { render action: "new" }
         format.json { render json: @spec.errors, status: :unprocessable_entity }
