@@ -103,7 +103,7 @@
                     <td><%= product.bh %></td>
                     <td><%= product.title %></td>
 
-                    <td><%= product.weight %></td>
+                    <td><%= product.weight.to_f if product.weight %></td>
                     <td>
                       <%= product.specs.size %>
                     </td>

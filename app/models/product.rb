@@ -5,6 +5,8 @@ class Product < ActiveRecord::Base
 
   validates :bh,:presence => true, :uniqueness => true
 
+  
+
   @@storage_path =  "#{Rails.root}/public/products"
 
   def upload_picture=(picture_field)
