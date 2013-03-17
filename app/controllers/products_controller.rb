@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
     w="1=1"
     o="id"
     @search=params[:search]
+    @order=params[:order]
     if params[:search] and !params[:search].empty?
       w="title like ? or bh like ? ","%#{params[:search]}%","%#{params[:search]}%"
     end

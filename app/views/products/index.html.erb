@@ -129,7 +129,16 @@
               </tbody>
             </table>
             <div style="padding: 10px;">
-              <%= will_paginate @products, :inner_window => 2 %>
+              
+              <div class="pull-left" >
+              <form class="form-inline pull-right" style="padding-left:20px;padding-right: 10px;" action="<%= "#{products_path}" %>" >
+                <input type="text" class="input-medium" name="page"/>
+                <input type="hidden" name="order" value="<%= @order %>"></input>
+                <input type="hidden" name="search" value="<%= @search %>"></input>
+                <button type="submit" class="btn">跳转</button>
+              </form>
+                </div>
+              <%= will_paginate @products, :inner_window => 2,:params=>{:search=>@search,:order=>@order} %>
             </div>
           </div>
 
