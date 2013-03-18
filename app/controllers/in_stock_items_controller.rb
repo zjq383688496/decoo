@@ -3,7 +3,7 @@ class InStockItemsController < ApplicationController
   # GET /in_stock_items.json
   def index
     @in_stock_items = InStockItem.all
-
+    @item=InStockItem.new
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @in_stock_items }
