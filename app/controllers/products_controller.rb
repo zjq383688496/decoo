@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
     
     @product = Product.new
     w="1=1"
-    o="id"
+    o="bh"
     @search=params[:search]
     @order=params[:order]
     if params[:search] and !params[:search].empty?
@@ -84,6 +84,7 @@ class ProductsController < ApplicationController
       else
         format.html { render action: "edit" }
         format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.js   { render action: "edit"}
       end
     end
   end
