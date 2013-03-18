@@ -2,7 +2,7 @@ class InStockItemsController < ApplicationController
   # GET /in_stock_items
   # GET /in_stock_items.json
   def index
-    @in_stock_items = InStockItem.all
+    @items = InStockItem.all
     @item=InStockItem.new
     respond_to do |format|
       format.html # index.html.erb
@@ -41,11 +41,13 @@ class InStockItemsController < ApplicationController
   # POST /in_stock_items.json
   def create
     @in_stock_item = InStockItem.new(params[:in_stock_item])
-
+    
     respond_to do |format|
       if @in_stock_item.save
+        
         format.html { redirect_to @in_stock_item, notice: 'In stock item was successfully created.' }
         format.json { render json: @in_stock_item, status: :created, location: @in_stock_item }
+        format.js   
       else
         format.html { render action: "new" }
         format.json { render json: @in_stock_item.errors, status: :unprocessable_entity }

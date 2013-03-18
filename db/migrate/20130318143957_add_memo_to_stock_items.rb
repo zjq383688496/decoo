@@ -1,0 +1,8 @@
+class AddMemoToStockItems < ActiveRecord::Migration
+  def change
+    add_column :in_stock_items,:memo,:text
+    add_column :in_stock_items,:spec_id,:integer
+    add_column :in_stock_items,:user_id,:integer
+    add_column :stocks,         :spec_id,:integer
+  end
+end
