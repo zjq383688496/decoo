@@ -50,6 +50,7 @@ class ProductsController < ApplicationController
     @specs=@product.specs.order('id desc')
     @spec=Spec.new(:product_id=>@product.id,:bh=>"#{@product.bh}-")
     @materials=SpecProperty.material
+    render :layout=>false
   end
 
   # POST /products
@@ -59,7 +60,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to edit_product_url(@product), notice: '零件已成功创建.' }
+        format.html { redirect_to product_specs_url(@product), notice: '零件已成功创建.' }
         format.json { render json: @product, status: :created, location: @product }
       else
         format.html { render action: "new" }
@@ -79,6 +80,7 @@ class ProductsController < ApplicationController
       if @product.update_attributes(params[:product])
         format.html { redirect_to products_url, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
+        format.js   { @current_product=@product }
       else
         format.html { render action: "edit" }
         format.json { render json: @product.errors, status: :unprocessable_entity }

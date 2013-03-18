@@ -3,8 +3,9 @@ class SpecsController < ApplicationController
   # GET /specs
   # GET /specs.json
   def index
-    @specs = Spec.all
-
+    @product=Product.find(params[:product_id])
+    @specs = @product.specs.order("id desc")
+    @spec=Spec.new(:product_id=>@product.id,:bh=>"#{@product.bh}-")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @specs }
