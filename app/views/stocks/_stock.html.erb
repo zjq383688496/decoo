@@ -1,0 +1,28 @@
+<tr>
+  <td>
+    <%= stock.id %>
+  </td>
+  <td>
+    <a title="<%= stock.name %>" rel="prettyPhoto" href="/products/<%= stock.product.image_url %>">
+      <img src="/products/<%= stock.product.image_url %>" class="img-polaroid" style="width:auto;height: 60px;"/>
+    </a>
+  </td>
+  <td>
+    <%= stock.bh %>
+  </td>
+  <td>
+    <%= stock.name %>
+  </td>
+  <td style="background-color: <%= stock.color.value %>">
+    
+  </td>
+  <td>
+    <%= stock.color_name %>
+  </td>
+  <td>
+    <%= stock.spec.material %>
+  </td>
+  <td>
+    <%= stock.quantity %>
+  </td>
+</tr>
