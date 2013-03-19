@@ -20,18 +20,17 @@
 
   <div class="row-fluid" >
     <div class="span12">
-      <div class="btn-group span6" >
-      <a href="#new-modal" role="button"  class="btn btn-success " data-toggle="modal">
-        
-        入库
+      <div class="btn-group span4" >
+      <a href="/stocks" role="button"  class="btn  ">
+        所有库存
       </a>
-        <a href="#new-modal" role="button"  class="btn btn-success " data-toggle="modal">
-        
-        出库
+        <a href="#query-modal" role="button"  class="btn " data-toggle="modal">
+        高级查询
       </a>
       </div>
-      <form class="form-inline pull-right" style="padding-left:20px;" action="<%=  products_path %>">
-        <input type="text" class="input-medium search-query" name="search"/>
+      <form class="form-inline " style="padding-left:20px;" action="<%=  stocks_path %>">
+        <label>快速搜索：</label>
+        <input type="text" class="input-medium " name="search"/>
         <button type="submit" class="btn">搜索</button>
       </form>
     </div>
@@ -51,41 +50,40 @@
           </h4>
         </div>
         <div class="content noPad">
+          <table id="DataTables_Table_0" class="responsive table table-bordered ">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>图片</th>
+                <th>货号</th>
+                <th>名称</th>
+                <th colspan="2">颜色</th>
+                <th>材料</th>                
+                <th>数量</th>
+                
+
+              </tr>
+            </thead>
+            <tbody id="items">
+              <%= render(@stocks) %>
+            </tbody>
+          </table>
         </div>
   </div>
 
 </div>
 
-<h1>Listing stocks</h1>
+<div id="query-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">高级查询</h3>
+    </div>
+    <div class="modal-body">
+      <%#*<form>%>
+        <%#*<label>颜色:</label>%>
+        <%#*<input type="text" placeholder="Type something…"></input>%>
+      <%#*</form>%>
+    </div>
 
-<table>
-  <tr>
-    <th>Bh</th>
-    <th>Name</th>
-    <th>Color</th>
-    <th>Color</th>
-    <th>Product</th>
-    <th>Quantity</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  </div>
 
-<% @stocks.each do |stock| %>
-  <tr>
-    <td><%= stock.bh %></td>
-    <td><%= stock.name %></td>
-    <td><%= stock.color %></td>
-    <td><%= stock.color_id %></td>
-    <td><%= stock.product_id %></td>
-    <td><%= stock.quantity %></td>
-    <td><%= link_to 'Show', stock %></td>
-    <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
-    <td><%= link_to 'Destroy', stock, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Stock', new_stock_path %>

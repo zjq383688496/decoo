@@ -1,5 +1,8 @@
 class Stock < ActiveRecord::Base
-  attr_accessible :bh, :color, :color_id, :name, :product_id, :quantity,:spec_id
+  attr_accessible :bh, :color_name, :color_id, :name, :product_id, :quantity,:spec_id
+  belongs_to :spec
+  belongs_to :color
+  belongs_to :product
 
   validates :spec_id,:presence => true
 

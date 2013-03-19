@@ -42,6 +42,8 @@ class InStockItemsController < ApplicationController
   # POST /in_stock_items
   # POST /in_stock_items.json
   def create
+    
+    params[:in_stock_item][:spec_bh].strip!
     ActiveRecord::Base.transaction do
     @in_stock_item = InStockItem.new(params[:in_stock_item])
     @in_stock_item.save!
