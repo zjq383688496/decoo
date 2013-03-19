@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
   has_many :specs ,:dependent=>:destroy
 
   validates :bh,:presence => true, :uniqueness => true
-
+  validates :weight,:numericality=>{:greater_than=>0}, :allow_blank => true
   
 
   @@storage_path =  "#{Rails.root}/public/products"

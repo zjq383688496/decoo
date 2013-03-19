@@ -20,8 +20,10 @@
 
   <div class="row-fluid">
     <div class="span12">
-
-      <%= notice_message %>
+      <div id="msg" style="padding:10px;">
+        <%= notice_message %>
+      </div>
+      
       <div class="box">
         <div class="title">
           <h4>
@@ -30,50 +32,9 @@
           </h4>
         </div>
         <div class="content noPad">
-          <div style="padding: 15px;">
+          <div style="padding: 15px;" id="form">
 
-            <%= form_for(@item, :url=>in_stock_items_path(@item),:remote=>true,:html=>{:class=>'form-horizontal'}) do |f| %>
-              <% if @item.errors.any? %>
-                <div id="error_explanation">
-                  <h2><%= pluralize(@item.errors.count, "error") %> prohibited this product from being saved:</h2>
-                  <ul>
-                    <% @item.errors.full_messages.each do |msg| %>
-                      <li><%= msg %></li>
-                    <% end %>
-                  </ul>
-                </div>
-              <% end %>
-            
-            <div class="control-group ">
-              <label for="bh" class="control-label ">货号</label>
-              <div class="controls">
-                <input class=" focused text" name="in_stock_item[spec_bh]" type="text"></input>
-              </div>
-            </div>
-              <div class="control-group ">
-                    <label for="bh" class="control-label ">重量</label>
-                    <div class="controls">
-                      <%= f.text_field :weight,:class=>' focused text' %>
-                      </div>
-            </div>
-             
-            
-            <div class="control-group ">
-              <label for="weight" class="control-label ">备注</label>
-              <div class="controls">
-                 <%= f.text_area :memo,:class=>' uniform',:rows=>3 %>
-              </div>
-            </div>
-              </div>
-              
-
-                <div class="form-actions">
-                  <button class="btn btn-info" type="submit">
-                    <span class="icon14 iconic-icon-plus white"></span>
-                    新增入库条目
-                  </button>
-                </div>
-              <% end %>
+            <%= render 'form' %>
             
                     </div>
           <table id="DataTables_Table_0" class="responsive table table-bordered ">
@@ -88,8 +49,8 @@
                 <th>数量</th>
                 <th>备注</th>
                 <th>业务员</th>
-                <th>时间</th>
-                <th>Actions</th>
+                <th>入库时间</th>
+                
               </tr>
             </thead>
             <tbody id="items">
