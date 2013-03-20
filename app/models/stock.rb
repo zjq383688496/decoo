@@ -13,7 +13,7 @@ class Stock < ActiveRecord::Base
   def add_item
     spec=Spec.find(self.spec_id)
     self.bh=spec.bh
-    self.color=spec.color.name
+    self.color_name=spec.color.name
     self.color_id=spec.color.id
     self.name=spec.product.title
     self.product_id=spec.product.id
