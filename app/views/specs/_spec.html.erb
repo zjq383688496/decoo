@@ -8,7 +8,7 @@
   <td>
     <div class="controls center">
 
-      <a href="<%= edit_product_spec_path(@product,spec) %>" title="" class="icon12 icomoon-icon-pencil" data-target="#edit-modal" role="button"  class="btn btn-success " data-toggle="modal">
+      <a href="<%= edit_product_spec_path(@product,spec) %>" title="" class="icon12 icomoon-icon-pencil" data-target="#new-spec-modal" role="button"  class="btn btn-success " data-toggle="modal">
 
       </a>
       <%= link_to "", spec, :class => "icon icomoon-icon-remove",'data-confirm' => "确定要删除吗？", :method => :delete, :title => "确定要删除吗？",:remote=>true %>

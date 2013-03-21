@@ -85,7 +85,7 @@
                     <a href='<%= "#{products_path}/?order=created_at desc&search=#{@search}" %>' class="icon-arrow-down">
                     </a>
                   </th>
-  <%#*<th class="ch" id="masterCh"><div class="checker" id="uniform-undefined"><span><input type="checkbox" class="styled" value="all" name="checkbox" style="opacity: 0;"></span></div></th>%>
+ 
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -108,8 +108,8 @@
                       <span id="count-spec-<%= product.id %>">
                       <%= product.specs.size %>
                         </span>
-                      <%= link_to '管理',product_specs_path(product),:remote=>true %>
-                      <%= link_to '增加',new_product_spec_path(product),:remote=>true %>
+                      <%= link_to '展开',product_specs_path(product),:class=>"icomoon-icon-arrow-down",:remote=>true %>
+                      <%= link_to '增加',new_product_spec_path(product),:class=>"icomoon-icon-plus-2",:remote=>true %>
                       <div id="spec-<%= product.id %>"></div>
                     </td>
                     <td>
@@ -243,6 +243,26 @@
 
     </div>
    
+  </div>
+<div id="edit-spec-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">规格编辑</h3>
+    </div>
+    <div class="modal-body">
+
+    </div>
+
+  </div>
+<div id="new-spec-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">编辑规格</h3>
+    </div>
+    <div class="modal-body">
+
+    </div>
+
   </div>
   <script type="text/javascript">
     $('body').on('hidden', '.modal', function () {
