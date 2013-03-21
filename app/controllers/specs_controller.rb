@@ -7,8 +7,9 @@ class SpecsController < ApplicationController
     @specs = @product.specs.order("id desc")
     @spec=Spec.new(:product_id=>@product.id,:bh=>"#{@product.bh}-")
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :layout=>false }
       format.json { render json: @specs }
+      format.js
     end
   end
 
@@ -26,11 +27,13 @@ class SpecsController < ApplicationController
   # GET /specs/new
   # GET /specs/new.json
   def new
+    @product=Product.find(params[:product_id])
     @spec = Spec.new
 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @spec }
+      format.js
     end
   end
 
@@ -119,6 +122,7 @@ class SpecsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to edit_product_url(@product), notice: '规格已成功删除.' }
       format.json { head :no_content }
+      format.js
     end
   end
 end

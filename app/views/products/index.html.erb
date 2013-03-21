@@ -78,7 +78,7 @@
                   </th>
                   <th>名称</th>
                   <th>重量</th>
-                  <th>规格数</th>
+                  <th>规格</th>
                   <th>时间
                     <a href="<%= products_path %>/?order=created_at&search=<%= @search %>" class="icon-arrow-up">
                     </a>
@@ -105,7 +105,12 @@
 
                     <td><%= product.weight.to_f if product.weight %></td>
                     <td>
+                      <span id="count-spec-<%= product.id %>">
                       <%= product.specs.size %>
+                        </span>
+                      <%= link_to '管理',product_specs_path(product),:remote=>true %>
+                      <%= link_to '增加',new_product_spec_path(product),:remote=>true %>
+                      <div id="spec-<%= product.id %>"></div>
                     </td>
                     <td>
                       <%= product.created_at.to_s(:db) %>
@@ -220,7 +225,7 @@
       <h3 id="myModalLabel">零件详细信息</h3>
     </div>
     <div class="modal-body">
-
+      
     </div>
 
     <div class="modal-footer">

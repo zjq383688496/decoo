@@ -1,5 +1,4 @@
-<tr id="spec-<%= spec.id %>" >
-  <td><%= spec.id %></td>
+<tr id="spec-<%= spec.id %>" >  
   <td><%= spec.bh %></td>
   <td style="background-color: <%= spec.color.value %>"></td>
   <td><%= spec.color.name %></td>
@@ -12,7 +11,7 @@
       <a href="<%= edit_product_spec_path(@product,spec) %>" title="" class="icon12 icomoon-icon-pencil" data-target="#edit-modal" role="button"  class="btn btn-success " data-toggle="modal">
 
       </a>
-      <%= link_to "", spec, :class => "icon icomoon-icon-remove",'data-confirm' => "确定要删除吗？", :method => :delete, :title => "确定要删除吗？" %>
+      <%= link_to "", spec, :class => "icon icomoon-icon-remove",'data-confirm' => "确定要删除吗？", :method => :delete, :title => "确定要删除吗？",:remote=>true %>
 
     </div>
   </td>
