@@ -7,6 +7,13 @@ class Spec < ActiveRecord::Base
   belongs_to :product
   belongs_to :color
 
+  validate :find_color
+  def find_color
+    unless Color.find_by_bh(color_bh)
+      errors[:color_bh]="颜色编号不存在"
+    end
+  end
+  
   #颜色编号验证有问题，需要进一步处理
   def color_bh=(color_bh_field)
     self.color_id=Color.find_by_bh!(color_bh_field).id

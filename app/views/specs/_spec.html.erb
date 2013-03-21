@@ -1,4 +1,4 @@
-<tr <%= "id='current_spec'" if spec==@current_spec %> >
+<tr id="spec-<%= spec.id %>" >
   <td><%= spec.id %></td>
   <td><%= spec.bh %></td>
   <td style="background-color: <%= spec.color.value %>"></td>

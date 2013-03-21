@@ -39,7 +39,12 @@ class SpecsController < ApplicationController
     @spec = Spec.find(params[:id])
     @materials=SpecProperty.material
     @product=Product.find(params[:product_id])
-    render :layout=>false
+    respond_to do |format|
+      format.html {render :layout=>false}
+      format.json { render json: @spec }
+      format.js
+    end
+    
   end
 
   # POST /specs
@@ -75,22 +80,31 @@ class SpecsController < ApplicationController
   # PUT /specs/1
   # PUT /specs/1.json
   def update
+    suc=true
     @product=Product.find(params[:product_id])
+    @spec = Spec.find(params[:id])
     if Color.find_by_bh(params[:spec][:color_bh]).nil?
-      flash[:error]="规格创建失败！颜色编号#{params[:spec][:color_bh]}不存在."
-      redirect_to edit_product_url(@product) and return
+      #flash[:error]="规格创建失败！颜色编号#{params[:spec][:color_bh]}不存在."
+      @spec.errors[:color_bh]="颜色编号#{params[:spec][:color_bh]}不存在."
+      suc=false
+      #redirect_to edit_product_url(@product) and return
     end
 
     params[:spec][:material]=params[:spec][:material].join(",") if params[:spec][:material]
-    @spec = Spec.find(params[:id])
+    
 
     respond_to do |format|
-      if @spec.update_attributes(params[:spec])
+      if !suc
+        format.html {redirect_to edit_product_url(@product)}
+        format.js   { render action: "edit"}
+      elsif @spec.update_attributes(params[:spec])
         format.html { redirect_to edit_product_url(@product), notice: '新规格已成功修改.' }
         format.json { head :no_content }
+        format.js
       else
         format.html { render action: "edit" }
         format.json { render json: @spec.errors, status: :unprocessable_entity }
+        format.js   { render action: "edit" }
       end
     end
   end
