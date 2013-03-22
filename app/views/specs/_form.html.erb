@@ -1,8 +1,6 @@
-<% if @method=='put'
-    url=edit_product_spec_path(@product,@spec)
-else
-  url=product_specs_path(@product)
-end
+<% 
+    url=@spec.persisted? ?  product_spec_path(@product,@spec) : url=product_specs_path(@product) 
+
 %>
 
 <%= form_for(@spec,:url=> url,:html=>{:class=>'form-horizontal'},:remote=>true) do |f| %>

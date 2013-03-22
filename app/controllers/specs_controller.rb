@@ -42,10 +42,11 @@ class SpecsController < ApplicationController
     @spec = Spec.find(params[:id])
     @materials=SpecProperty.material
     @product=Product.find(params[:product_id])
+    
     respond_to do |format|
       format.html {render :layout=>false}
       format.json { render json: @spec }
-      format.js   { @method='put'}
+      format.js  
     end
     
   end
@@ -63,11 +64,11 @@ class SpecsController < ApplicationController
         @specs=@spec.product.specs.order('id desc')
         format.html { redirect_to edit_product_url(@product), notice: '新规格已成功创建.' }
         format.json { render json: @spec, status: :created, location: @spec }
-        format.js   { @suc=true,@current_spec=@spec }
+        format.js   { render action: "index" }
       else
         format.html { render action: "new" }
         format.json { render json: @spec.errors, status: :unprocessable_entity }
-        format.js   { render action: "new",method:'put'}
+        format.js   { render action: "new"}
       end
     end
   end
