@@ -213,15 +213,11 @@
               <input type="hidden" name="product[image_url]" id="image-url" />
               <img src="" class="img-polaroid" style="width:auto;height: 60px;" id="product-image"/>
 
-              <%= link_to("点击上传", "#", :id => "topic_add_image", :rel => "twipsy", :class => "icon eco-images ")%>
+              <%= link_to("点击上传", "#", :id => "topic_add_image", :rel => "twipsy", :class => "btn eco-images ")%>
             </div>
           </div>
         </div>
-      <div style="display:none;">
-    <form >
-      <input type="file" id="topic_upload_images"/>
-    </form>
-</div>
+      
       </div>
       <div class="modal-footer">
         <button class="btn btn-info" type="submit" onclick="$('#new-modal').modal('hide')">保存</button>
@@ -230,7 +226,11 @@
       </div>
     <% end %>
   </div>
-
+<div style="display:none;">
+    <form >
+      <input type="file" id="topic_upload_images"/>
+    </form>
+</div>
   <div id="detail_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
