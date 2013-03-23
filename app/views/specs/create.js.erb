@@ -1,6 +1,4 @@
 
-<%  if !@suc %>
-alert('颜色编号不存在');
-<% else %>
-$('#specs').html("<%= escape_javascript(render(@specs)) %>");
-<% end %>
+
+$('#count-spec-<%= @product.id %>').html("<%= @product.specs.size %>");
+$('#spec-<%= @product.id %>').html("<%= escape_javascript(render(@specs)) %>");
