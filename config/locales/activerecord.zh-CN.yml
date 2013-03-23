@@ -2,6 +2,8 @@
 ---
 zh-CN:
   activerecord:
+    models:
+      product: "零件"
     attributes:
       product:
         bh: "编号"

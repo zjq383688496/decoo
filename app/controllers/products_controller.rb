@@ -41,6 +41,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @product }
+      format.js
     end
   end
 
@@ -50,7 +51,11 @@ class ProductsController < ApplicationController
     @specs=@product.specs.order('id desc')
     @spec=Spec.new(:product_id=>@product.id,:bh=>"#{@product.bh}-")
     @materials=SpecProperty.material
-    render :layout=>false
+    respond_to do |format|
+      format.html { render :layout=>false }
+      format.js
+    end
+    
   end
 
   # POST /products
@@ -67,6 +72,7 @@ class ProductsController < ApplicationController
       else
         format.html { render action: "new" }
         format.json { render json: @product.errors, status: :unprocessable_entity }
+        format.js   { render action: "new"}
       end
     end
   end
@@ -100,6 +106,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to products_url, notice: '数据已删除.' }
       format.json { head :no_content }
+      format.js   
     end
   end
 
