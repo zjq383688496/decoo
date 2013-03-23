@@ -45,5 +45,10 @@ gem 'bootstrap_helper', "1.4.1"
 
 gem 'thin'
 
-# ±íµ¥
+# ï¿½?
 gem 'simple_form', "2.0.2"
+
+# ä¸Šä¼ ç»„ä»¶
+gem 'carrierwave', '0.6.2'
+
+gem 'mini_magick','3.3', :require => false

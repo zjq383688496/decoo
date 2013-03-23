@@ -17,6 +17,8 @@ Decoo::Application.routes.draw do
 
   get "main/index"
 
+  resources :photos
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
