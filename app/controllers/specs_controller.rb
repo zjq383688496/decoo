@@ -54,8 +54,7 @@ class SpecsController < ApplicationController
   # POST /specs
   # POST /specs.json
   def create
-    @product=Product.find(params[:product_id])
-    
+    @product=Product.find(params[:product_id])    
     params[:spec][:material]=params[:spec][:material].join(",") if params[:spec][:material]
     @spec=@product.specs.build(params[:spec])
     respond_to do |format|
@@ -79,9 +78,7 @@ class SpecsController < ApplicationController
     
     @product=Product.find(params[:product_id])
     @spec = @product.specs.find(params[:id])   
-
     params[:spec][:material]=params[:spec][:material].join(",") if params[:spec][:material]  
-
     respond_to do |format|
       if @spec.update_attributes(params[:spec])
         format.html { redirect_to edit_product_url(@product), notice: '新规格已成功修改.' }

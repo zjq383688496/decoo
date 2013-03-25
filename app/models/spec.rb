@@ -8,23 +8,22 @@ class Spec < ActiveRecord::Base
   belongs_to :product
   belongs_to :color
 
-#  validate :bh_exit?,:on => :create
-#  def bh_exit?
-#    if self.color.nil?
-#      errors[:color_bh]="没有这种颜色"
-#    elsif Spec.find_by_bh("#{self.product.bh}-#{self.color.bh}")
-#      errors[:bh]="已经存在相同的规格编号"
-#    end
-#  end
+  validate :bh_exist?
+  def bh_exist?    
+    unless @color_exist
+      errors[:color_id]="没有这种颜色"
+    end
+  end
   
   #颜色编号验证有问题，需要进一步处理
   def color_bh=(color_bh_field)
+    @color_exist=true
     color=Color.find_by_bh!(color_bh_field)
     self.color_id=color.id
     
   rescue ActiveRecord::RecordNotFound
-    
-    errors[:color_id]="颜色编号#{color_bh_field}不存在"
+    @color_exist=false
+    errors[:color_bh]="颜色编号#{color_bh_field}不存在"
   end
 
   def color_bh
