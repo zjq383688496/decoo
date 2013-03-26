@@ -1,13 +1,22 @@
-<%= simple_form_for(@outstock) do |f| %>
+<%= simple_form_for(@outstock,:html=>{:class=>"form-horizontal"}) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :user_id %>
-    <%= f.input :memo %>
+  <div class="form-inputs" >
     <%= f.input :taker %>
+    <%= f.input :memo ,input_html: { :rows=>2 } %>
+
+    <input type="text" name="outstock[outstock_items_attributes][spec]"></input>
+  
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <button class="btn btn-info" type="button">
+      <span class="icon14 iconic-icon-plus white"></span>
+      增加出库条目
+    </button>
+    <button class="btn btn-info" type="submit">
+      <span class="icon14 iconic-icon-plus white"></span>
+      保存出库单
+    </button>
   </div>
 <% end %>

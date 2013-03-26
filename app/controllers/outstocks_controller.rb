@@ -3,7 +3,7 @@ class OutstocksController < ApplicationController
   # GET /outstocks.json
   def index
     @outstocks = Outstock.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @outstocks }
@@ -25,7 +25,7 @@ class OutstocksController < ApplicationController
   # GET /outstocks/new.json
   def new
     @outstock = Outstock.new
-
+    3.times {@outstock.outstock_items.build}
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @outstock }

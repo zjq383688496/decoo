@@ -19,3 +19,6 @@ zh-CN:
         spec_bh: "货号"
         memo: "备注"
         weight: "重量"
+      outstock:
+        memo: "备注"
+        taker: "领料人"
