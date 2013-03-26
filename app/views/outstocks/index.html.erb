@@ -1,0 +1,27 @@
+<h1>Listing outstocks</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Memo</th>
+    <th>Taker</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @outstocks.each do |outstock| %>
+  <tr>
+    <td><%= outstock.user_id %></td>
+    <td><%= outstock.memo %></td>
+    <td><%= outstock.taker %></td>
+    <td><%= link_to 'Show', outstock %></td>
+    <td><%= link_to 'Edit', edit_outstock_path(outstock) %></td>
+    <td><%= link_to 'Destroy', outstock, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Outstock', new_outstock_path %>

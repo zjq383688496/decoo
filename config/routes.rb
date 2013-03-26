@@ -1,4 +1,8 @@
 Decoo::Application.routes.draw do
+  resources :outstock_items
+
+  resources :outstocks
+
   resources :spec_properties
 
   resources :specs
