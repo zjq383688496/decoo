@@ -3,7 +3,7 @@ class InStockItemsController < ApplicationController
   # GET /in_stock_items
   # GET /in_stock_items.json
   def index
-    @items = InStockItem.limit(10).order("created_at desc")
+    @items = InStockItem.paginate(:page => params[:page], :per_page => 10).order("created_at desc")
     @in_stock_item=InStockItem.new
     respond_to do |format|
       format.html # index.html.erb
