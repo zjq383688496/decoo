@@ -9,6 +9,8 @@ class Spec < ActiveRecord::Base
   belongs_to :product
   belongs_to :color
   has_one :stock
+  has_many :in_stock_items,:dependent=>:destroy
+  
   
   validate :bh_exist?
   def bh_exist?    
