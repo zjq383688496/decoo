@@ -4,6 +4,8 @@ class Stock < ActiveRecord::Base
   belongs_to :color
   belongs_to :product
 
+  
+
   validates :spec_id,:presence => true
 
 #  def feedin(in_stock_item)

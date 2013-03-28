@@ -20,7 +20,7 @@
     <%= stock.color_name %>
   </td>
   <td>
-    <%= stock.spec.material %>
+    <%= stock.spec.material if stock.spec %>
   </td>
   <td>
     <%= stock.quantity %>

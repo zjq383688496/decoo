@@ -4,10 +4,12 @@ class Spec < ActiveRecord::Base
 
   validates :color_id,:product_id,:presence=>{:message=>"编号不存在"}
   validates_uniqueness_of :color_id, :scope => :product_id
+  
 
   belongs_to :product
   belongs_to :color
-
+  has_one :stock
+  
   validate :bh_exist?
   def bh_exist?    
     unless @color_exist
@@ -35,7 +37,10 @@ class Spec < ActiveRecord::Base
     self.bh="#{self.product.bh}-#{self.color.bh}"
   end
 
-  
+  after_save :change_stock
+  def change_stock
+    self.stock.add_item if self.stock
+  end
 
   def material_to_array
     self.material.split(/[\,]/) if self.material
