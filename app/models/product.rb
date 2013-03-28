@@ -3,6 +3,7 @@ class Product < ActiveRecord::Base
 
   has_many :specs ,:dependent=>:destroy
 
+
   validates :bh,:presence => true, :uniqueness => true
   validates :weight,:numericality=>{:greater_than=>0}, :allow_blank => true
   
@@ -11,6 +12,13 @@ class Product < ActiveRecord::Base
 
   def upload_picture=(picture_field)
     self.image_url=uploadFile(picture_field)
+  end
+
+  after_save :change_spec_and_stock
+  def change_spec_and_stock
+    self.specs.each do |spec|
+      spec.save!
+    end
   end
 
   protected
