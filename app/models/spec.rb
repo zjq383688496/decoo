@@ -22,7 +22,7 @@ class Spec < ActiveRecord::Base
     
     color=Color.find_by_bh!(color_bh_field)
     self.color_id=color.id
-    
+    @@color_exist=true
   rescue ActiveRecord::RecordNotFound
     @@color_exist=false
     errors[:color_bh]="颜色编号#{color_bh_field}不存在"
@@ -45,6 +45,14 @@ class Spec < ActiveRecord::Base
        self.stock.save
      end
   end
+
+  before_destroy :check_stock
+  def check_stock
+    if self.stock
+      raise "规格编号为#{self.bh}的零件已加入库存，如要删除请管理员清除此规格零件的库存"
+    end
+  end
+
 
   def material_to_array
     self.material.split(/[\,]/) if self.material

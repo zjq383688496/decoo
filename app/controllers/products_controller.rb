@@ -101,12 +101,17 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     @product = Product.find(params[:id])
+    begin
     @product.destroy
-
+    @deleted=true
+    rescue Exception=>e
+      flash.now[:error]=e.message
+      @deleted=false
+    end
     respond_to do |format|
       format.html { redirect_to products_url, notice: '数据已删除.' }
       format.json { head :no_content }
-      format.js   
+      format.js   { @deleted }
     end
   end
 

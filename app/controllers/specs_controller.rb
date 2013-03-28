@@ -98,11 +98,18 @@ class SpecsController < ApplicationController
     @spec = Spec.find(params[:id])
     
     @product=@spec.product
-    @spec.destroy
+    begin
+      @spec.destroy
+      @deleted=true
+    rescue Exception=>e
+      flash.now[:error]=e.message
+      @deleted=false
+    end
     respond_to do |format|
       format.html { redirect_to edit_product_url(@product), notice: '规格已成功删除.' }
       format.json { head :no_content }
-      format.js
+      format.js   {@deleted}
     end
+
   end
 end
