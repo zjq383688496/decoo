@@ -14,10 +14,10 @@ class Product < ActiveRecord::Base
     self.image_url=uploadFile(picture_field)
   end
 
-  after_save :change_spec_and_stock
-  def change_spec_and_stock
+  after_save :change_spec
+  def change_spec    
     self.specs.each do |spec|
-      spec.save!
+       spec.save!
     end
   end
 
