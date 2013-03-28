@@ -3,9 +3,9 @@
     <%= in_stock_item.id %>
   </td>
   <td>
-    <%= in_stock_item.spec_bh %>
+    <%= in_stock_item.spec.bh if in_stock_item.spec %>
   </td>
-  <td style="background-color: <%= in_stock_item.color.value %>">
+  <td style="background-color: <%= in_stock_item.spec.color.value if in_stock_item.spec %>">
   
   </td>
   <td></td>
