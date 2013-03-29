@@ -1,7 +1,9 @@
 Decoo::Application.routes.draw do
   resources :outstock_items
 
-  resources :outstocks
+  resources :outstocks do
+    
+  end
 
   resources :spec_properties
 
@@ -20,6 +22,7 @@ Decoo::Application.routes.draw do
   end
 
   get "main/index"
+  post "outstocks/find_stock"
 
   resources :photos
 

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class OutstocksController < ApplicationController
   # GET /outstocks
   # GET /outstocks.json
@@ -80,4 +81,25 @@ class OutstocksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def find_stock
+    if params[:weight].strip!.empty? || params[:bh].strip!.empty?
+      flash.now[:error]="没有输入编号或重量"
+    else
+      @spec=Spec.find_by_bh(params[:bh]) if params[:bh]
+      if @spec && @stock=Stock.find_by_spec_id(@spec.id)
+        @outstock_item = OutstockItem.new(:spec_id=>@spec.id,:weight=>params[:weight])
+      else
+
+        flash.now[:error]="库存里没有编号为#{params[:bh]}的零件"
+      end
+      
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to outstocks_url }
+      format.js   
+    end
+  end
+  
 end

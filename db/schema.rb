@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(:version => 20130326144126) do
     t.integer  "spec_id"
     t.integer  "product_id"
     t.integer  "outstock_id"
+    t.decimal  "weight"
+    t.integer  "quantity"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

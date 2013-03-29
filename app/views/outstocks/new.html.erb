@@ -34,9 +34,38 @@
         <div class="content noPad">
           <div style="padding: 15px;" id="form">
 
-            <%= render 'form' %>
+           <%= simple_form_for(@outstock,:html=>{:class=>"form-horizontal"}) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs" >
+    <%= f.input :taker %>
+    <%= f.input :memo ,input_html: { :rows=>2 } %>
+
+  </div>
+
+
+
+
+  <div class="form-actions">
+
+    <button class="btn btn-info" type="submit">
+      <span class="icon14 iconic-icon-plus white"></span>
+      保存出库单
+    </button>
+  </div>
+<% end %>
+
 
                     </div>
+          <div style="padding: 10px;">
+            <%= form_for :outstock_item, :url=>'/outstocks/find_stock',:remote=>true,:html=>{:class=>"form-inline"} do |f| %>
+            <label>货号</label>
+            <input type="input" name="bh"></input>
+            <label>重量</label>
+            <input type="input" name="weight"></input>
+            <button type="submit" class="btn">添加出库条目</button>
+            <% end %>
+          </div>
           <table id="DataTables_Table_0" class="responsive table table-bordered ">
             <thead>
               <tr>
@@ -51,20 +80,8 @@
                 
               </tr>
             </thead>
-            <tbody id="items">
-              <tr>
-                <td>
-                  <input type="text" name="outstock[outstock_items_attributes][][spec_id]"></input>
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                  <input type="text" name="outstock[outstock_items_attributes][][spec_id]"></input>
-                </td>
-                <td></td>
-                
-              </tr>
+            <tbody id="outstock_items">
+              
               <%#= render(@items) %>
             </tbody>
           </table>

@@ -24,11 +24,16 @@ class OutstockItemsController < ApplicationController
   # GET /outstock_items/new
   # GET /outstock_items/new.json
   def new
-    @outstock_item = OutstockItem.new
+    @outstock=Outstock.find(params[:outstock_id])
 
+    @spec=Spec.find_by_bh(params[:bh]) if params[:bh]
+    if @spec && @stock=Stock.find_by_spec_id(@spec.id)
+      @outstock_item = @outstock.outstock_items.build(:spec_id=>@spec.id,:weight=>params[:weight])
+    end
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @outstock_item }
+      format.js
     end
   end
 

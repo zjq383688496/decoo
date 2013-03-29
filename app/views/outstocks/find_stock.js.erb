@@ -1,0 +1,6 @@
+<% if @outstock_item %>
+$('#outstock_items').prepend("<%= escape_javascript(render(@outstock_item) ) %>");
+$('#new_outstock').prepend(" <input type=\"hidden\" name=\"outstock[outstock_items_attributes][][spec_id]\" value=\"<%= @outstock_item.spec_id %>\" \/><input type=\"hidden\" name=\"outstock[outstock_items_attributes][][weight]\" value=\"<%= @outstock_item.weight %>\" \/> ");
+<% else %>
+$('#msg').html("<%= escape_javascript(notice_message ) %>");
+<% end %>
