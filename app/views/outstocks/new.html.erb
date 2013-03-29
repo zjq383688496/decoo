@@ -34,63 +34,79 @@
         <div class="content noPad">
           <div style="padding: 15px;" id="form">
 
-           <%= simple_form_for(@outstock,:html=>{:class=>"form-horizontal"}) do |f| %>
-  <%= f.error_notification %>
+            <%= simple_form_for(@outstock,:html=>{:class=>"form-horizontal"}) do |f| %>
+              <%= f.error_notification %>
 
-  <div class="form-inputs" >
-    <%= f.input :taker %>
-    <%= f.input :memo ,input_html: { :rows=>2 } %>
+              <div class="form-inputs" >
+                <%= f.input :taker %>
+                <%= f.input :memo ,input_html: { :rows=>2 } %>
 
-  </div>
-
-
+              </div>
 
 
-  <div class="form-actions">
 
-    <button class="btn btn-info" type="submit">
-      <span class="icon14 iconic-icon-plus white"></span>
-      保存出库单
-    </button>
-  </div>
-<% end %>
+            </div>
 
 
-                    </div>
-          <div style="padding: 10px;">
-            <%= form_for :outstock_item, :url=>'/outstocks/find_stock',:remote=>true,:html=>{:class=>"form-inline"} do |f| %>
-            <label>货号</label>
-            <input type="input" name="bh"></input>
-            <label>重量</label>
-            <input type="input" name="weight"></input>
-            <button type="submit" class="btn">添加出库条目</button>
-            <% end %>
-          </div>
-          <table id="DataTables_Table_0" class="responsive table table-bordered ">
-            <thead>
-              <tr>
-                
-                <th>货号</th>
-                <th colspan="2">颜色</th>
-                <th>材料</th>
+            <div style="padding: 10px;">
+              <a href="#add-modal" role="button"  class="btn " data-toggle="modal">添加出库明细</a>
+            </div>
 
-                <th>重量</th>
-                <th>数量</th>
-               
-                
-              </tr>
-            </thead>
-            <tbody id="outstock_items">
-              
-              <%#= render(@items) %>
-            </tbody>
-          </table>
-          <div style="padding: 10px;">
+            <table id="DataTables_Table_0" class="responsive table table-bordered ">
+              <thead>
+                <tr>
 
-          </div>
+                  <th>货号</th>
+                  <th colspan="2">颜色</th>
+                  <th>材料</th>
+
+                  <th>重量</th>
+                  <th>数量</th>
+
+
+                </tr>
+              </thead>
+              <tbody id="outstock_items">
+
+
+              </tbody>
+            </table>
+            <div style="padding: 10px;">
+
+            </div>
+
+            <div class="form-actions">
+
+              <button class="btn btn-info" type="submit">
+                <span class="icon14 iconic-icon-plus white"></span>
+                提交出库单
+              </button>
+            </div>
+          <% end %>
         </div>
       </div><!-- End .box -->
     </div>
   </div>
 </div>
 
+<div id="add-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">添加出库明细</h3>
+  </div>
+  <div class="modal-body">
+    <div style="padding: 10px;">
+      <%= form_for :outstock_item, :url=>'/outstocks/find_stock',:remote=>true,:html=>{:class=>"form-horizontal"} do |f| %>
+        <label>货号</label>
+        <input type="input" name="bh"></input>
+        <label>重量</label>
+        <input type="input" name="weight"></input>
+        <div class="form-ations">
+          <button type="submit" class="btn">添加出库条目</button>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+
+</div>

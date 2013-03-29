@@ -3,7 +3,7 @@ class OutstocksController < ApplicationController
   # GET /outstocks
   # GET /outstocks.json
   def index
-    @outstocks = Outstock.all
+    @outstocks = Outstock.paginate(:page => params[:page], :per_page => 10).order("created_at desc")
     
     respond_to do |format|
       format.html # index.html.erb
@@ -26,7 +26,7 @@ class OutstocksController < ApplicationController
   # GET /outstocks/new.json
   def new
     @outstock = Outstock.new
-    3.times {@outstock.outstock_items.build}
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @outstock }
@@ -83,11 +83,12 @@ class OutstocksController < ApplicationController
   end
 
   def find_stock
-    if params[:weight].strip!.empty? || params[:bh].strip!.empty?
+    if params[:weight].empty? || params[:bh].empty?
       flash.now[:error]="没有输入编号或重量"
     else
-      @spec=Spec.find_by_bh(params[:bh]) if params[:bh]
+      @spec=Spec.find_by_bh(params[:bh].strip!) if params[:bh]
       if @spec && @stock=Stock.find_by_spec_id(@spec.id)
+        
         @outstock_item = OutstockItem.new(:spec_id=>@spec.id,:weight=>params[:weight])
       else
 

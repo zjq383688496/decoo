@@ -20,45 +20,52 @@
 
   <div class="row-fluid">
     <div class="span12">
+<div class="btn-group span4" >
+      <a href="/outstocks" role="button"  class="btn  ">
+        所有出库单
+      </a>
+        <a href="/outstocks/new" role="button"  class="btn " >
+        新增出库单
+      </a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row-fluid">
+    <div class="span12">
       <div id="msg" style="padding:10px;">
         <%= notice_message %>
       </div>
-
+      
+      
       <div class="box">
         <div class="title">
           <h4>
             <span class="icon16 brocco-icon-grid"></span>
-            <span>入库单</span>
+            <span>出库单</span>
           </h4>
         </div>
         <div class="content noPad">
-          <div style="padding: 15px;" id="form">
-
-            <%= render 'form' %>
-
-                    </div>
+          
           <table id="DataTables_Table_0" class="responsive table table-bordered ">
             <thead>
               <tr>
                 <th>#</th>
-                <th>货号</th>
-                <th colspan="2">颜色</th>
-                <th>材料</th>
-
-                <th>重量</th>
-                <th>数量</th>
-                <th>备注</th>
+                <th>领料人</th>
+                
                 <th>业务员</th>
-                <th>入库时间</th>
+                <th>备注</th>
+                <th>出库时间</th>
 
               </tr>
             </thead>
             <tbody id="items">
-              <%= render(@items) %>
+              <%= render(@outstocks) %>
             </tbody>
           </table>
           <div style="padding: 10px;">
-
+<%= will_paginate @outstocks, :inner_window => 2 %>
           </div>
         </div>
       </div><!-- End .box -->
@@ -66,31 +73,3 @@
   </div>
 </div>
 
-
-<h1>Listing outstocks</h1>
-
-<table>
-  <tr>
-    <th>User</th>
-    <th>Memo</th>
-    <th>Taker</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @outstocks.each do |outstock| %>
-  <tr>
-    <td><%= outstock.user_id %></td>
-    <td><%= outstock.memo %></td>
-    <td><%= outstock.taker %></td>
-    <td><%= link_to 'Show', outstock %></td>
-    <td><%= link_to 'Edit', edit_outstock_path(outstock) %></td>
-    <td><%= link_to 'Destroy', outstock, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Outstock', new_outstock_path %>
