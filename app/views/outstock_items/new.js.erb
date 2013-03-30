@@ -1,1 +1,3 @@
-$('#outstock_items').prepend("<%= escape_javascript(render(@outstock_item) ) %>");
+
+$("#add-modal> .modal-body").html("<%= escape_javascript(render(:partial=>'form')) %>");
+ $('#add-modal').modal('show');

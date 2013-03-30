@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20130326144126) do
   end
 
   create_table "outstocks", :force => true do |t|
+    t.string   "bh"
     t.integer  "user_id"
     t.text     "memo"
     t.string   "taker"

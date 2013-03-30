@@ -60,7 +60,7 @@ class InStockItemsController < ApplicationController
       format.js
     end
     rescue
-      flash.now[:error]="入库操作出错"
+      flash.now[:error]="因库存不足或其他原因入库操作出错"
       respond_to do |format|
         format.html { render action: "new" }
         format.json { render json: @in_stock_item.errors, status: :unprocessable_entity }

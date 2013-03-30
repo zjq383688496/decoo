@@ -6,7 +6,7 @@ class Stock < ActiveRecord::Base
   
 
   validates :spec_id,:presence => true
-
+  validates :quantity,:numericality=>{:greater_than=>0}
 #  def feedin(in_stock_item)
 #
 #  end
@@ -19,4 +19,18 @@ class Stock < ActiveRecord::Base
     self.name=spec.product.title
     self.product_id=spec.product.id
   end
+
+#  def self.outstock(outstock_list)
+#    Stock.transaction do
+#      outstock_list.outstock_items.each do |item|
+#        if Stock.find_by_spec_id()
+#        if stock.quantity<self.quantity
+#              errors.add(:weight,"库存不足")
+#              return false
+#            end
+#        end
+#      end
+#    end
+#
+#  end
 end

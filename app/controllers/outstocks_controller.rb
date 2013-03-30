@@ -42,16 +42,26 @@ class OutstocksController < ApplicationController
   # POST /outstocks.json
   def create
     @outstock = Outstock.new(params[:outstock])
-
-    respond_to do |format|
-      if @outstock.save
-        format.html { redirect_to @outstock, notice: 'Outstock was successfully created.' }
-        format.json { render json: @outstock, status: :created, location: @outstock }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @outstock.errors, status: :unprocessable_entity }
+    ActiveRecord::Base.transaction do
+      @outstock.save!
+      @outstock.outstock_items.each do |item|
+         stock=Stock.find_by_spec_id(item.spec_id)
+          stock.quantity -= item.quantity
+          stock.save!
+        
+      end
+      
+      respond_to do |format|
+        format.html { redirect_to @outstock, notice: '出库单已成功创建.' }
       end
     end
+    rescue
+      respond_to do |format|
+        flash[:error]="出库操作失败"
+        format.html { render action: "new" }
+    
+      end
+    
   end
 
   # PUT /outstocks/1
@@ -90,6 +100,7 @@ class OutstocksController < ApplicationController
       if @spec && @stock=Stock.find_by_spec_id(@spec.id)
         
         @outstock_item = OutstockItem.new(:spec_id=>@spec.id,:weight=>params[:weight])
+        @outstock_item.valid?()
       else
 
         flash.now[:error]="库存里没有编号为#{params[:bh]}的零件"

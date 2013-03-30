@@ -4,6 +4,7 @@ zh-CN:
   activerecord:
     models:
       product: "零件"
+      outstock_item: "出库单明细"
     attributes:
       product:
         bh: "编号"
@@ -22,3 +23,6 @@ zh-CN:
       outstock:
         memo: "备注"
         taker: "领料人"
+      outstock_item:
+        spec_bh: "货号"
+        weight: "重量"
